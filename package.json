@@ -1,0 +1,22 @@
+{
+  "name": "evaluar",
+  "version": "1.0.0",
+  "description": "Desafío de testing para Evaluar",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D4v1D-lab/evaluar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/D4v1D-lab/evaluar/issues"
+  },
+  "homepage": "https://github.com/D4v1D-lab/evaluar#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6"
+  }
+}
