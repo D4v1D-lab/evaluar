@@ -4,7 +4,7 @@
   "description": "Desafío de testing para Evaluar",
   "main": "index.js",
   "scripts": {
-    "test:demo": "SLOW_MO=1500 HOLD_MS=30000 playwright test --headed"
+    "test:demo": "SLOW_MO=1200 HOLD_MS=5000 playwright test --headed"
   },
   "repository": {
     "type": "git",
