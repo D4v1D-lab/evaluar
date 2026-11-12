@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Desafío de testing para Evaluar",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:demo": "SLOW_MO=800 HOLD_MS=15000 playwright test tests/inicio.spec.ts --headed"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/D4v1D-lab/evaluar.git"

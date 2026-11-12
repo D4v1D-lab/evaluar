@@ -30,23 +30,19 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    /* Slow down each action when SLOW_MO is set (e.g. SLOW_MO=500 for headed runs). */
+    launchOptions: {
+      slowMo: process.env.SLOW_MO ? Number(process.env.SLOW_MO) : 0,
+      args: ['--start-maximized'],
+    },
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { viewport: null },
     },
 
     /* Test against mobile viewports. */
