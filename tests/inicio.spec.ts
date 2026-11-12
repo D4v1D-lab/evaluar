@@ -1,8 +1,8 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 
-test('candidate registers through the controlled registration form', async ({ page }) => {
-  // Allow time for the test plus the optional demo hold at the end.
-  test.setTimeout(60_000 + Number(process.env.HOLD_MS ?? 0));
+test('candidate registers through the controlled registration form', async ({ sharedPage: page }) => {
+  // Allow time for the registration flow.
+  test.setTimeout(60_000);
 
   const url =
     'https://candidato.evaluar.com/auth/autoregister/controlled/572ff080-da01-4a64-9858-897f5a8d1be9';
@@ -53,8 +53,4 @@ test('candidate registers through the controlled registration form', async ({ pa
 
   // The candidate should land on their process page after registering.
   await expect(page).toHaveURL(/\/process\//, { timeout: 30000 });
-
-  // Keep the final screen visible for a live demo (HOLD_MS in milliseconds).
-  const holdMs = Number(process.env.HOLD_MS ?? 0);
-  if (holdMs) await page.waitForTimeout(holdMs);
 });

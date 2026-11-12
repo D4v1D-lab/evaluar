@@ -10,18 +10,27 @@ npm install
 npx playwright install
 ```
 
-Ejecuta el test de registro en modo headed para verlo:
+Ejecuta toda la suite y luego abre el reporte:
 
 ```bash
-npx playwright test tests/inicio.spec.ts --headed
+npx playwright test
+npx playwright show-report
+```
+
+Los tests `inicio` y `matricial` comparten una sola ventana de navegador: primero se registra un candidato y luego el flujo continúa desde la página de Evaluaciones, sin abrir una ventana nueva.
+
+Para ver la ejecución en el navegador (headed):
+
+```bash
+npx playwright test --headed
 ```
 
 ## Modo presentación
 
-Ejecuta el test más lento y deja la pantalla final visible para una demo en vivo:
+Ejecuta toda la suite más lento y deja la pantalla final visible para una demo en vivo:
 
 ```bash
-SLOW_MO=1500 HOLD_MS=30000 npx playwright test tests/inicio.spec.ts --headed
+SLOW_MO=1500 HOLD_MS=30000 npx playwright test --headed
 ```
 
 - `SLOW_MO` — retraso por acción en ms (`1500` se ve bien en una demo; un valor más alto es más lento).
