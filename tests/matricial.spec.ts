@@ -4,8 +4,8 @@ const processUrl =
   'https://candidato.evaluar.com/es/process/572ff080-da01-4a64-9858-897f5a8d1be9';
 
 test('completes the Personalidad assessment from the Evaluaciones page', async ({ sharedPage: page }) => {
-  // Allow time for all questions plus the optional demo hold at the end.
-  test.setTimeout(180_000 + Number(process.env.HOLD_MS ?? 0));
+  // Allow time for all questions.
+  test.setTimeout(180_000);
 
   // Continue in the same window, on the Evaluaciones page.
   await page.goto(processUrl);
@@ -51,8 +51,4 @@ test('completes the Personalidad assessment from the Evaluaciones page', async (
   // Finish the assessment and continue from the completion screen.
   await expect(page.getByText('¡Buen trabajo!')).toBeVisible({ timeout: 30000 });
   await page.getByRole('button', { name: 'Continuar', exact: true }).click();
-
-  // Keep the screen visible for the demo / to inspect the next step.
-  const holdMs = Number(process.env.HOLD_MS ?? 0);
-  if (holdMs) await page.waitForTimeout(holdMs);
 });
