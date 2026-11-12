@@ -21,11 +21,11 @@ npx playwright test tests/inicio.spec.ts --headed
 Ejecuta el test más lento y deja la pantalla final visible para una demo en vivo:
 
 ```bash
-SLOW_MO=800 HOLD_MS=15000 npx playwright test tests/inicio.spec.ts --headed
+SLOW_MO=1500 HOLD_MS=30000 npx playwright test tests/inicio.spec.ts --headed
 ```
 
-- `SLOW_MO` — retraso por acción en ms (`800` se ve bien en una demo; un valor más alto es más lento).
-- `HOLD_MS` — cuánto tiempo mantener abierta la pantalla final (por ejemplo, `15000` = 15 s).
+- `SLOW_MO` — retraso por acción en ms (`1500` se ve bien en una demo; un valor más alto es más lento).
+- `HOLD_MS` — cuánto tiempo mantener abierta la pantalla final (por ejemplo, `30000` = 30 s).
 
 O usa el script incluido, que equivale al comando anterior:
 

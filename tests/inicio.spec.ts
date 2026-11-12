@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 
 test('candidate registers through the controlled registration form', async ({ page }) => {
+  // Allow time for the test plus the optional demo hold at the end.
+  test.setTimeout(60_000 + Number(process.env.HOLD_MS ?? 0));
+
   const url =
     'https://candidato.evaluar.com/auth/autoregister/controlled/572ff080-da01-4a64-9858-897f5a8d1be9';
 
