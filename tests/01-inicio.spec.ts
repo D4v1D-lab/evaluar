@@ -1,11 +1,11 @@
 import { test, expect } from './fixtures';
+import { env } from '../config/env';
 
 test('candidate registers through the controlled registration form', async ({ sharedPage: page }) => {
   // Allow time for the registration flow.
   test.setTimeout(60_000);
 
-  const url =
-    'https://candidato.evaluar.com/auth/autoregister/controlled/572ff080-da01-4a64-9858-897f5a8d1be9';
+  const url = env.PROCESS_URL;
 
   await page.goto(url);
 
