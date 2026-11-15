@@ -21,9 +21,13 @@ test('completes the Personalidad assessment from the Evaluaciones page', async (
   await page.getByRole('dialog').getByRole('button', { name: 'Continuar', exact: true }).click();
   await expect(page).toHaveURL(/\/evaluation\//, { timeout: 30000 });
 
-  // Total questions come from the "Pregunta X / N" counter (mobile + desktop copies exist).
+  // Wait for the assessment to finish preparing, then read the question counter.
+  await expect(
+    page.getByText('Estamos preparando todo para empezar tu evaluación'),
+  ).toBeHidden({ timeout: 60000 });
+
   const counter = page.getByText(/Pregunta\s*\d+\s*\/\s*\d+/).filter({ visible: true });
-  await expect(counter).toBeVisible({ timeout: 15000 });
+  await expect(counter).toBeVisible({ timeout: 10000 });
   const total = Number((await counter.innerText()).match(/\/\s*(\d+)/)?.[1]);
   expect(total).toBeGreaterThan(0);
 

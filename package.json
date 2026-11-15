@@ -3,15 +3,13 @@
   "version": "1.0.0",
   "description": "Desafío de testing para Evaluar",
   "main": "index.js",
-  "scripts": {
-    "test:demo": "SLOW_MO=800 HOLD_MS=3000 playwright test --headed"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/D4v1D-lab/evaluar.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Patricio Martínez Hinojosa",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/D4v1D-lab/evaluar/issues"
@@ -19,7 +17,6 @@
   "homepage": "https://github.com/D4v1D-lab/evaluar#readme",
   "devDependencies": {
     "@playwright/test": "^1.65.0",
-    "@types/node": "^26.6.6",
-    "typescript": "^7.0.2"
+    "@types/node": "^26.6.6"
   }
 }
