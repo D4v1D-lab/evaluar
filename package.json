@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Desafío de testing para Evaluar",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:demo": "SLOW_MO=1500 HOLD_MS=30000 playwright test --headed"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/D4v1D-lab/evaluar.git"
@@ -17,6 +19,7 @@
   "homepage": "https://github.com/D4v1D-lab/evaluar#readme",
   "devDependencies": {
     "@playwright/test": "^1.65.0",
-    "@types/node": "^26.6.6"
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
   }
 }
