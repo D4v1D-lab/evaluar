@@ -1,22 +1,14 @@
 import { test, expect } from './fixtures';
 import { env } from '../config/env';
+import { RegistrationPage } from '../pages/registration.page';
 
 test('candidate registers through the controlled registration form', async ({ sharedPage: page }) => {
   // Allow time for the registration flow.
   test.setTimeout(60_000);
 
+  const registration = new RegistrationPage(page);
   const url = env.PROCESS_URL;
 
-  await page.goto(url);
-
-  const firstName = page.getByRole('textbox', { name: /Nombre/ });
-  const lastName = page.getByRole('textbox', { name: /Apellido/ });
-  const location = page.getByRole('combobox', { name: /Ubicación/ });
-  const email = page.getByRole('textbox', { name: /Correo electrónico/ });
-  const phoneCountryCode = page.getByRole('combobox').nth(1);
-  const phoneNumber = page.getByRole('textbox', { name: /^\d+$/ });
-  const privacyCheckbox = page.getByRole('checkbox', { name: /Acepto el uso/ });
-  const submitButton = page.getByRole('button', { name: 'Ingresar', exact: true });
   // Unique, validation-safe data so the test can run repeatedly.
   const uniqueDigits = Date.now().toString().slice(-8);
   const uniqueLetters = uniqueDigits.replace(/\d/g, (d) => 'abcdefghij'[Number(d)]);
@@ -25,31 +17,26 @@ test('candidate registers through the controlled registration form', async ({ sh
   const emailAddress = `abc+${uniqueDigits}@abc.com`;
   const phoneNumberValue = `0979${uniqueDigits.slice(-6)}`;
 
+  await registration.open(url);
+
   // Wait for the client-rendered form to appear before interacting with it.
-  await expect(firstName).toBeVisible();
+  await expect(registration.firstName).toBeVisible();
 
-  // Personal data.
-  await firstName.fill(firstNameValue);
-  await lastName.fill(lastNameValue);
-
-  // Location.
-  await location.click();
-  await page.getByRole('option', { name: 'Ecuador' }).click();
-
-  // Contact details.
-  await email.fill(emailAddress);
-
-  // Use Ecuador as the phone country code (+593).
-  await phoneCountryCode.click();
-  await page.getByRole('option', { name: /Ecuador/ }).click();
-  await phoneNumber.fill(phoneNumberValue);
+  await registration.fillForm({
+    firstName: firstNameValue,
+    lastName: lastNameValue,
+    email: emailAddress,
+    phoneNumber: phoneNumberValue,
+  });
+  await registration.selectLocation('Ecuador');
+  await registration.selectPhoneCountry(/Ecuador/);
 
   // Accept the privacy policy.
-  await privacyCheckbox.click();
-  await expect(privacyCheckbox).toBeChecked();
+  await registration.privacyCheckbox.click();
+  await expect(registration.privacyCheckbox).toBeChecked();
 
   // Submit the registration form.
-  await submitButton.click();
+  await registration.submit();
 
   // The candidate should land on their process page after registering.
   await expect(page).toHaveURL(/\/process\//, { timeout: 30000 });
