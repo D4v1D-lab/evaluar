@@ -1,10 +1,8 @@
 import { test, expect } from './fixtures';
+import { env } from '../config/env';
 import { AssessmentsPage } from '../pages/assessments.page';
 import { QuestionPage } from '../pages/question.page';
 import { SurveyPage } from '../pages/survey.page';
-
-const processUrl =
-  'https://candidato.evaluar.com/es/process/572ff080-da01-4a64-9858-897f5a8d1be9';
 
 test('completes the Teletrabajo assessment from the Evaluaciones page', async ({ sharedPage: page }) => {
   // Allow time for all questions plus the optional demo hold at the end.
@@ -15,7 +13,7 @@ test('completes the Teletrabajo assessment from the Evaluaciones page', async ({
   const survey = new SurveyPage(page);
 
   // Continue in the same window, on the Evaluaciones page.
-  await assessments.open(processUrl);
+  await assessments.open(env.PROCESS_PAGE_URL);
 
   await expect(assessments.card('Teletrabajo')).toBeVisible({ timeout: 15000 });
   await assessments.continueCard('Teletrabajo');
