@@ -7,6 +7,7 @@ export class QuestionPage extends BasePage {
   readonly radios: Locator;
   readonly nextButton: Locator;
   readonly finishButton: Locator;
+  readonly completionFinishButton: Locator;
   readonly goodJobText: Locator;
   readonly completionText: Locator;
   readonly continueButton: Locator;
@@ -22,6 +23,7 @@ export class QuestionPage extends BasePage {
     this.radios = page.getByRole('radio');
     this.nextButton = page.getByRole('button', { name: 'Siguiente' });
     this.finishButton = page.getByRole('button', { name: 'Finalizar' });
+    this.completionFinishButton = page.getByRole('button', { name: 'Finalizar', exact: true });
     this.goodJobText = page.getByText('¡Buen trabajo!');
     this.completionText = page.getByText(
       /¡Buen trabajo!|¡Todas las evaluaciones completadas!/,

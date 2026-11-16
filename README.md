@@ -41,3 +41,9 @@ O usa el script incluido, que equivale al comando anterior:
 ```bash
 npm run test:demo
 ```
+
+## Migración a Page Objects (Día 1)
+
+- 1.4 — `01-inicio.spec.ts`
+- 1.5 — `02-matricial.spec.ts`
+- 1.6 — `03-multiple.spec.ts`
