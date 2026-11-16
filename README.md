@@ -1,4 +1,4 @@
-# evaluar
+# Evaluar
 Desafío de testing para Evaluar
 
 ## Ejecución de tests
@@ -17,7 +17,7 @@ npx playwright test
 npx playwright show-report
 ```
 
-Los tests `inicio` y `matricial` comparten una sola ventana de navegador: primero se registra un candidato y luego el flujo continúa desde la página de Evaluaciones, sin abrir una ventana nueva.
+Los tests `01-inicio.spec.ts`, `02-matricial.spec.ts` y `03-multiple.spec.ts` comparten una sola ventana de navegador: primero se registra un candidato y luego el flujo continúa desde la página de Evaluaciones, sin abrir una ventana nueva.
 
 Para ver la ejecución en el navegador (headed):
 
@@ -41,3 +41,9 @@ O usa el script incluido, que equivale al comando anterior:
 ```bash
 npm run test:demo
 ```
+
+## Migración a Page Objects (Día 1)
+
+- 1.4 — `01-inicio.spec.ts`
+- 1.5 — `02-matricial.spec.ts`
+- 1.6 — `03-multiple.spec.ts`
