@@ -1,4 +1,4 @@
-import { type Locator, type Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
 export class QuestionPage extends BasePage {
@@ -43,6 +43,7 @@ export class QuestionPage extends BasePage {
   }
 
   async answerDiagonal(): Promise<void> {
+    await expect(this.radios).toHaveCount(25);
     for (let i = 0; i < 5; i++) {
       await this.radios.nth(i * 5 + i).click();
     }
