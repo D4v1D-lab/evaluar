@@ -1,5 +1,6 @@
-# Evaluar
-Desafío de testing para Evaluar
+# Evaluar — Framework de Testing
+
+Framework de automatización E2E con Playwright + TypeScript para el proceso de evaluación de candidatos.
 
 ## Ejecución de tests
 
@@ -42,8 +43,7 @@ O usa el script incluido, que equivale al comando anterior:
 npm run test:demo
 ```
 
-## Migración a Page Objects (Día 1)
+## 2.1 — Factory de candidatos y fixtures
 
-- 1.4 — `01-inicio.spec.ts`
-- 1.5 — `02-matricial.spec.ts`
-- 1.6 — `03-multiple.spec.ts`
+- `fixtures/candidate.factory.ts` genera datos únicos por ejecución con `buildCandidate()`.
+- `tests/fixtures.ts` expone una sola ventana (`sharedPage`) y los page objects (`registrationPage`, `assessmentsPage`, `questionPage`, `surveyPage`).
