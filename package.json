@@ -4,6 +4,8 @@
   "description": "Desafío de testing para Evaluar",
   "main": "index.js",
   "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report",
     "test:demo": "SLOW_MO=1500 HOLD_MS=30000 playwright test --headed"
   },
   "repository": {
