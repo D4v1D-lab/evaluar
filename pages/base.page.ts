@@ -10,9 +10,4 @@ export class BasePage {
   async expectVisible(locator: Locator, timeout?: number): Promise<void> {
     await expect(locator).toBeVisible({ timeout });
   }
-
-  async clickAndVerify(clickLocator: Locator, expectedLocator: Locator): Promise<void> {
-    await clickLocator.click();
-    await expect(expectedLocator).toBeVisible();
-  }
 }
